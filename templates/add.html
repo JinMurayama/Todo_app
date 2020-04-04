@@ -1,0 +1,48 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}タスクの追加{% endblock %}
+     
+{% block content %}
+
+{% include "header.html" %}
+        <h1>タスクの追加</h1>
+        <hr>
+        <p><a href="/list">Back to the list</a></p>
+        <table align="center">
+            <form action="/add" method="post">
+                <tr>
+                    <th>タスクのタイトル：</th>
+                    <td>
+                        <input type="text" name="title" size="24">
+                　　</td>
+            　　</tr>
+                <tr>
+                    <th>タスクの内容：</th>
+                    <td>
+                        <input type="text" name="contents" size="24">
+                　　</td>
+            　　</tr>
+            　　<tr>
+                    <th>期限</th>
+                    <td>
+                        <input type="date" name="deadline" size="24">
+                　　</td>
+            　　</tr>
+            　　<tr>
+            　　  <th>ステータス</th>
+            　　  <td align = "left">
+            　　  <select name="status">
+                            <option value="notstarted">NOT STARTED</option>
+                            <option value="finished">FINISHED</option>
+                            <option value="working">WORKING</option>
+                  </select>
+                  </td>
+                </tr>
+                <tr>
+                    <td>
+            　　　<input type="submit" value="追加">
+            　　　</td>
+            　　</tr>
+            </form>
+        </table>
+{% endblock %}

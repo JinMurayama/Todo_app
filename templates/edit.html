@@ -1,0 +1,58 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}タスクの追加{% endblock %}
+     
+{% block content %}
+
+{% include "header.html" %}
+        <h1>タスクの編集</h1>
+        <hr>
+        <p><a href="/list">Back to the list</a></p>
+        <table>
+            <form action="/edit_register" name="edit" method="post">
+                {% for task in tasks %}
+                <tr>
+                    <th>
+                        title
+                    </th>
+                    <td>
+                        <input type="text" name="title" value="{{ task[1] }}" size="24">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Contents
+                    </th>
+                    <td>
+                        <input type="text" name="contents" value="{{ task[2] }}" size="24">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Deadline
+                    </th>
+                    <td>
+                        <input type="date" name="deadline" value="{{ task[3] }}" size="24">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Status
+                    </th>
+                    <td>
+                        <select name="status" value="{{ task[4]}}">
+                            <option value="notstarted">NOT STARTED</option>
+                            <option value="finished">FINISHED</option>
+                            <option value="working">WORKING</option>
+                        </select>
+                    </td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td>
+                        <input type="submit" value="変更を保存">
+                    </td>
+                </tr>
+            </form>
+        </table>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}新規登録{% endblock %}
+     
+{% block content %}
+<link href="css/bootstrap.css" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/flash.css">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <ul class=flashes>
+        {% for category, message in messages %}
+          <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+     <h1>新規登録</h1>
+     <hr>
+     <table align="center">
+         <form action="/confirm" method="post">
+            <tr>
+                <th>New User name : </th>
+                <td>
+                    <input type="text" name="new_user_name" size="24">
+                </td>
+            </tr>
+            <tr>
+                <th>New Password : </th>
+                <td>
+                    <input type="password" name="new_password" size="24">
+                </td>
+            </tr>
+            <tr>
+                <th>Again Password : </th>
+                <td>
+                    <input type="password" name="again_password" size="24">
+                </td>
+            </tr>
+              <td align="center">
+                <input align="center" type="submit" value="Regist">
+              </td>
+         </form>
+     </table>     
+{% endblock %}

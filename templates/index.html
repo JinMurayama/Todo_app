@@ -1,0 +1,42 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}Hello　Flask{% endblock %}
+     
+{% block content %}
+<link href="css/bootstrap.css" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/flash.css">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <ul class=flashes>
+        {% for category, message in messages %}
+          <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+
+       <h1>Log in form</h1>
+        <hr>
+        <table align="center">
+            <form action="/list" method="post">
+                <tr>
+                    <th>User name : </th>
+                    <td>
+                        <input type="text" name="user_name" size="24">
+                    </td>
+                </tr>
+                <tr>
+                    <th>Password : </th>
+                    <td>
+                        <input type="password" name="password" size="24">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                      <input type="submit" value="Log In">
+                    </td>
+                </tr>
+            </form>
+        </table>
+        <p align="center"><a href="/regist">if you don't have the account, please click here</a></p>
+{% endblock %}

@@ -1,0 +1,14 @@
+li {
+    border-bottom: 0.5px solid white;
+    width: 100vw;
+    color: white;
+}
+
+.flashes{
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+.failed {
+    background-color: deeppink;
+}

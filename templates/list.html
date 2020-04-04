@@ -1,0 +1,40 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}タスクの追加{% endblock %}
+
+{% block content %}
+<script src="static/js/delete.js"></script>
+{% include "header.html" %}
+      <div>
+        <h1>task</h1>
+        <h2>{{name}}さんようこそ！！</h2>
+      </div>
+        <hr>
+        <a href="add">Task Add</a>
+         <table border="1" id="task">
+            <tr>
+                <td>title</td>
+                <td>contents</td>
+                <td>deadline</td>
+                <td>status</td>
+                <td>delete</td>
+                <td>edit</td>
+            </tr>
+            {% for task in tasks %}
+            <tr>
+                <td>{{ task[1] }}</td>
+                <td>{{ task[2] }}</td>
+                <td>{{ task[3] }}</td>
+                <td>{{ task[4] }}</td>
+                <td><form action="/delete" onsubmit="return check()" method="post">
+                    <input type="hidden" name="no" value={{ task[0] }}>
+                    <input type="submit" value="削除">
+                </form></td>
+                <td><form action="/edit" method="post">
+                    <input type="hidden" name="no" value={{ task[0] }}>
+                    <input type="submit" value="編集">
+                </form></td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endblock %}
